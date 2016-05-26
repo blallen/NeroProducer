@@ -22,7 +22,7 @@ class BarePhotons : virtual public BareP4
             PhoHighPt = 1UL << (PhoVLoose50 + 2),
             PhoLooseNoEVeto = 1UL << (PhoVLoose50 + 3),
             PhoMediumNoEVeto = 1UL << (PhoVLoose50 + 4),
-            PhoTightNoEVeto = 1UL << (PhoVLoose50 + 5),
+            PhoTightNoEVeto = 1UL << (PhoVLoose50 + 5)
         };
 
         BarePhotons();
