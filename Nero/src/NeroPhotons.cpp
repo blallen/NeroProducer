@@ -250,12 +250,15 @@ int NeroPhotons::analyze(const edm::Event& iEvent,const edm::EventSetup &iSetup)
 
         if (IsExtend() ){
             rawpt->push_back(pho.pt());
-            e55->push_back(pho.e5x5());
+            rawScEnergy->push_back(pho.superCluster().rawEnergy())
             
             hOverE->push_back(pho.hadTowOverEm()); //pho.hadronicOverEm());
             chWorstIso->push_back( (*iso_wch)[ref] );
             // chIsoMax->push_back( ??? );
             
+            e33->push_back(pho.full5x5_e3x3());
+            e55->push_back(pho.full5x5_e5x5());
+
             sipip->push_back(pho.spp());
             sieip->push_back(pho.sep());
             r9->push_back(pho.r9());
@@ -265,6 +268,9 @@ int NeroPhotons::analyze(const edm::Event& iEvent,const edm::EventSetup &iSetup)
 
             clusterTools = new EcalClusterLazyTools(iEvent, iSetup, ebRecHits_token, eeRecHits_token);
             time->push_back(clusterTools->SuperClusterSeedTime(*pho.superCluster()));
+            emax->push_back(clusterTools->eMax(*pho.superCluster()));
+            e2nd->push_back(clusterTools->e2nd(*pho.superCluster()));
+
             // timeSpan->push_back( ??? );
             delete clusterTools;
             
