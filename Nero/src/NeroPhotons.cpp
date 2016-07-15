@@ -250,7 +250,7 @@ int NeroPhotons::analyze(const edm::Event& iEvent,const edm::EventSetup &iSetup)
 
         if (IsExtend() ){
             rawpt->push_back(pho.pt());
-            rawScEnergy->push_back(pho.superCluster().rawEnergy())
+            rawScEnergy->push_back(pho.superCluster()->rawEnergy());
             
             hOverE->push_back(pho.hadTowOverEm()); //pho.hadronicOverEm());
             chWorstIso->push_back( (*iso_wch)[ref] );
